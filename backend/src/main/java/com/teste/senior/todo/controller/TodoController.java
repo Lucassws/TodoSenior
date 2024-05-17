@@ -1,45 +1,50 @@
 package com.teste.senior.todo.controller;
 
 import com.teste.senior.todo.model.Todo;
-import com.teste.senior.todo.repository.TodoRepository;
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
+import com.teste.senior.todo.service.TodoService;
+import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@NoArgsConstructor
-@AllArgsConstructor
-@RequestMapping(path = "/todo")
+@CrossOrigin(origins = "*")
+@RequestMapping(value = "/todo")
+@RequiredArgsConstructor
 public class TodoController {
 
-    private TodoRepository todoRepository;
+    private final TodoService todoService;
 
     @GetMapping
-    public ResponseEntity<List<Todo>> getAll() {
-        return ResponseEntity.ok(todoRepository.findAll());
+    @ResponseStatus(HttpStatus.OK)
+    public List<Todo> getAll() {
+        return todoService.findAll();
     }
 
     @GetMapping(path = "/{id}")
-    public ResponseEntity<Todo> getById(Integer id) {
-        return ResponseEntity.ok(todoRepository.findById(id).orElse(null));
+    public ResponseEntity<Todo> getById(@PathVariable Integer id) throws Exception {
+        return ResponseEntity.ok(todoService.findById(id).orElseThrow(() -> new Exception(
+                "Tarefa com o ID: "+ id + " não Encontrada")));
     }
 
-    @PostMapping(path = "/save")
-    public ResponseEntity<Todo> save(Todo todo) {
-        return ResponseEntity.ok(todoRepository.save(todo));
+    @PostMapping
+    @ResponseStatus(HttpStatus.CREATED)
+    public Todo createTodo(@RequestBody Todo todo) {
+        return todoService.create(todo);
     }
 
-    @PutMapping(path = "/update")
-    public ResponseEntity<Todo> update(Todo todo) {
-        return ResponseEntity.ok(todoRepository.save(todo));
+    @PutMapping(path = "/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    public Todo updateTodo(@RequestBody Todo todo) {
+        return todoService.update(todo);
     }
 
-    @DeleteMapping(path = "/delete/{id}")
-    public ResponseEntity<Void> delete(Integer id) {
-        todoRepository.deleteById(id);
+    @DeleteMapping(path = "/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public ResponseEntity delete(@PathVariable Integer id) {
+        todoService.deleteById(id);
         return ResponseEntity.noContent().build();
     }
 }
