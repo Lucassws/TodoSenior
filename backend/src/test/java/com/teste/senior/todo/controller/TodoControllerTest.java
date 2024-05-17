@@ -6,28 +6,34 @@ import com.teste.senior.todo.model.enums.Status;
 import com.teste.senior.todo.service.TodoService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.MockitoAnnotations;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.web.servlet.MockMvc;
 
 import java.util.Collections;
 import java.util.Optional;
 
 import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.doNothing;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
+@ExtendWith(SpringExtension.class)
 @WebMvcTest(TodoController.class)
 public class TodoControllerTest {
 
     @Autowired
     private MockMvc mockMvc;
+
+    @MockBean
+    private TodoController todoController;
 
     @MockBean
     private TodoService todoService;
@@ -47,7 +53,7 @@ public class TodoControllerTest {
 
     @Test
     public void testGetAll() throws Exception {
-        when(todoService.findAll()).thenReturn(Collections.singletonList(todo));
+        when(todoController.getAll()).thenReturn(Collections.singletonList(todo));
 
         mockMvc.perform(get("/todo"))
                 .andExpect(status().isOk())
@@ -56,7 +62,7 @@ public class TodoControllerTest {
 
     @Test
     public void testGetById() throws Exception {
-        when(todoService.findById(1)).thenReturn(Optional.of(todo));
+        when(todoController.getById(1)).thenReturn(ResponseEntity.of(Optional.of(todo)));
 
         mockMvc.perform(get("/todo/1"))
                 .andExpect(status().isOk())
@@ -65,7 +71,7 @@ public class TodoControllerTest {
 
     @Test
     public void testCreateTodo() throws Exception {
-        when(todoService.create(any(Todo.class))).thenReturn(todo);
+        when(todoController.createTodo(any(Todo.class))).thenReturn(todo);
 
         mockMvc.perform(post("/todo")
                         .contentType(MediaType.APPLICATION_JSON)
@@ -76,7 +82,7 @@ public class TodoControllerTest {
 
     @Test
     public void testUpdateTodo() throws Exception {
-        when(todoService.update(any(Todo.class))).thenReturn(todo);
+        when(todoController.updateTodo(any(Todo.class))).thenReturn(todo);
 
         mockMvc.perform(put("/todo/1")
                         .contentType(MediaType.APPLICATION_JSON)
