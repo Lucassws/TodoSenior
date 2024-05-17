@@ -1,0 +1,23 @@
+<div class="container">
+    <h1 >TAREFAS FINALIZADAS</h1>
+  <div class="badge">
+    <button (click)="voltar()" class="mat-elevation-z8 voltar-button" mat-raised-button color="warn">Voltar</button>
+  </div>
+
+  <div class="content" *ngFor="let item of listFinished">
+    <mat-card class="mat-elevation-z8">
+      <mat-card-header>
+        <div class="header-content">
+          <div class="header-text">
+            <mat-card-title>{{ item.title }}</mat-card-title>
+            <mat-card-subtitle>{{ item.description }}</mat-card-subtitle>
+          </div>
+          <div class="header-date">
+            <p>Data de conclusão: {{ item.completionDate | date: 'dd/MM/yyyy' }}</p>
+            <p>Hora de conclusão: {{ item.completionDate | date: 'HH:mm' }}</p>
+          </div>
+        </div>
+      </mat-card-header>
+    </mat-card>
+  </div>
+</div>

@@ -1,0 +1,19 @@
+<form>
+    <h1>CRIANDO UMA NOVA TAREFA</h1>
+  
+    <div class="forms">
+      <mat-form-field class="form">
+        <mat-label>Titulo</mat-label>
+        <input [(ngModel)]="todo.title" name="todo.title" matInput placeholder="Tarefa senior" />
+      </mat-form-field>
+      <mat-form-field class="form">
+        <mat-label>Descrição</mat-label>
+        <input [(ngModel)]="todo.description" name="todo.description" matInput placeholder="Tarefa senior 2" />
+      </mat-form-field>
+    </div>
+    <div class="buttons">
+      <button (click)="create()" class="novo-todo mat-elevation-z8" mat-raised-button color="warn">CRIAR</button>
+      <button  (click)="cancel()" class="cancelar-todo mat-elevation-z8" mat-raised-button color="warn">CANCELAR</button>
+    </div>
+  </form>
+  

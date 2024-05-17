@@ -1,0 +1,55 @@
+.container {
+    width: 60%;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.badge{
+    margin-top: 1.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.tasks-finalizadas {
+    margin: auto;
+    width: 100%;
+    background-color: #0C9346;
+}
+
+.create-button {
+    background-color: #0C9346;
+}
+
+.update-button {
+    background-color: #3F51B5;
+}
+
+.delete-button {
+    background-color: #C03018;
+}
+
+.content {
+    width: 100%;
+}
+
+.novo-todo {
+    margin: auto;
+    width: 100%;
+    background-color: #428CC9;
+}
+
+mat-card {
+    margin-top: .8rem;
+    padding: .2rem;
+}
+
+.actions {
+    text-align: end;
+}
+
+.actions button {
+    margin: .5rem;
+}
