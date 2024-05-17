@@ -27,11 +27,12 @@ O aplicativo de lista de tarefas foi escrito para usar Java Spring e Angular.
 3. Instalar o Maven e configurar a variavel 'Maven Path'
 4. Instalar IntelliJ Idea
 5. Instalar o Docker Desktop
-6. Subir o Docker e executar o comando ***'docker-compose up'*** na pasta raiz do projeto
+6. Subir o Docker e executar o comando ***'docker-compose up'*** na pasta raiz do projeto para subir o banco de dados
 7. Confira se é a ultima versão do projeto
 8. Abra a IDE
 9. Abra o projeto via pom.xml
 10. O IntelliJ instalará todas as dependências, mas se não; use ***maven clean*** e instale comandos para instalar todos os pacotes de dependência.
+11. Execute o projeto através da classe ***'TodoApplication'***
 
 ## Preparing the Frontend to start
 
@@ -41,7 +42,7 @@ O aplicativo de lista de tarefas foi escrito para usar Java Spring e Angular.
 4. Abrir a pasta do projeto via VS Code
 5. Abra o terminal e use o comando ***'npm i'*** para instalar todos os pacotes
 6. Depois da instalação voce pode subir a aplicação com o comando ***'npm start'***.
-7. É EXTREMAMENTE IMPORTANTE usar o comando ***'npm start'*** ao invés do ***'ng serve'*** devido a diferença de versões dos componentes utilizados
+7. É **EXTREMAMENTE IMPORTANTE** usar o comando ***'npm start'*** ao invés do ***'ng serve'*** devido a diferença de versões dos componentes utilizados
 
 ## Observações
 Caso ao subir a aplicação você esteja enfrentando um problema de ***'opensslErrorStack'*** basta subir a aplicação com ***'npm start'***, e não usar o ***'ng serve'***.
