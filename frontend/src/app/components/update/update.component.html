@@ -4,11 +4,15 @@
     <div class="forms">
       <mat-form-field class="form">
         <mat-label>Titulo</mat-label>
-        <input [(ngModel)]="todo.title" name="todo.title" matInput placeholder="tarefa senior" />
+          <label>
+              <input [(ngModel)]="todo.title" name="todo.title" matInput placeholder="tarefa senior" />
+          </label>
       </mat-form-field>
       <mat-form-field class="form">
         <mat-label>Descrição</mat-label>
-        <input [(ngModel)]="todo.description" name="todo.description" matInput placeholder="Tarefa senior 2" />
+          <label>
+              <input [(ngModel)]="todo.description" name="todo.description" matInput placeholder="Tarefa senior 2" />
+          </label>
       </mat-form-field>
     </div>
     <div class="buttons">
