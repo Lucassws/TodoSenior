@@ -3,6 +3,7 @@ package com.teste.senior.todo.controller;
 import com.teste.senior.todo.model.Todo;
 import com.teste.senior.todo.service.TodoService;
 import lombok.RequiredArgsConstructor;
+import org.aspectj.apache.bcel.generic.ObjectType;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -43,7 +44,7 @@ public class TodoController {
 
     @DeleteMapping(path = "/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public ResponseEntity delete(@PathVariable Integer id) {
+    public ResponseEntity<ObjectType> delete(@PathVariable Integer id) {
         todoService.deleteById(id);
         return ResponseEntity.noContent().build();
     }

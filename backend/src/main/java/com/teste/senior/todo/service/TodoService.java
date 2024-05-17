@@ -49,7 +49,7 @@ public class TodoService {
     }
 
     private static void verifyTitle(Todo todo) {
-        if (todo.getTitle().isEmpty()) {
+        if (todo.getTitle() == null || todo.getTitle().isEmpty()) {
             throw new RuntimeException("Titulo é obrigatório");
         }
     }

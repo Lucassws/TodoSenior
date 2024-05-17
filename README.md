@@ -40,11 +40,14 @@ O aplicativo de lista de tarefas foi escrito para usar Java Spring e Angular.
 3. Instalar Angular CLI via NPM
 4. Abrir a pasta do projeto via VS Code
 5. Abra o terminal e use o comando ***'npm i'*** para instalar todos os pacotes
-6. Depois da instalação voce pode subir a aplicação com o comando ***'ng serve'***.
+6. Depois da instalação voce pode subir a aplicação com o comando ***'npm start'***.
+7. É EXTREMAMENTE IMPORTANTE usar o comando ***'npm start'*** ao invés do ***'ng serve'*** devido a diferença de versões dos componentes utilizados
 
 ## Observações
+Caso ao subir a aplicação você esteja enfrentando um problema de ***'opensslErrorStack'*** basta subir a aplicação com ***'npm start'***, e não usar o ***'ng serve'***.
+
 Se as portas '**8080**' ou '**4200**' da máquina host já estiverem em uso, você receberá alguns erros sobre isso. O '**4200**' é a porta padrão do Angular e o '**8080**' é a porta padrão da API Spring.
 
-Se '**4200**' já estiver em uso, você pode usar o comando '**ng s --port < port number >**' para iniciar o FE com uma porta diferente. Ao alterar a porta FE você deve editar a classe 'TodoController' na API Spring. A classe do controlador possui um atributo que é sobre **CORS**, você verá a definição da porta FE aqui, basta atualizar o valor do número da porta.
+Se '**4200**' já estiver em uso, você pode usar o comando '**npm start --port < port number >**' para iniciar o FE com uma porta diferente. Ao alterar a porta FE você deve editar a classe 'TodoController' na API Spring. A classe do controlador possui um atributo que é sobre **CORS**, você verá a definição da porta FE aqui, basta atualizar o valor do número da porta.
 
 Se '**8080**' já estiver em uso, modifique **application.properties** e adicione/edite o valor da propriedade **server.port**. (como: server.port = 8090). Em seguida, abra os arquivos do projeto FE e encontre o arquivo **envirments.ts**. Ele armazena o URL da API com o valor da porta, altere o valor da porta do URL.
